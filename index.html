@@ -538,10 +538,10 @@ nav.appnav{position:fixed!important;left:50%;bottom:calc(62px + env(safe-area-in
 nav.appnav button{flex:1;display:flex!important;flex-direction:column;align-items:center;gap:3px;padding:7px 4px 6px!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:16px!important;font:700 11px Inter!important;color:#9fb8a8!important;min-width:0!important}
 nav.appnav button svg{width:22px;height:22px}
 /* faixa embaixo da barra de abas: o conteúdo que passa por ali fica borrado e escurecido */
-body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(150px + env(safe-area-inset-bottom));z-index:29;pointer-events:none;
-  background:linear-gradient(to top,rgba(6,20,14,.92) 0%,rgba(6,20,14,.75) 45%,rgba(6,20,14,0) 100%);
+body::after{content:"";position:fixed;left:0;right:0;bottom:-160px;height:calc(310px + env(safe-area-inset-bottom));z-index:29;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,20,14,.94) 0%,rgba(6,20,14,.9) 52%,rgba(6,20,14,.7) 72%,rgba(6,20,14,0) 100%);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  -webkit-mask-image:linear-gradient(to top,#000 55%,transparent);mask-image:linear-gradient(to top,#000 55%,transparent)}
+  -webkit-mask-image:linear-gradient(to top,#000 78%,transparent);mask-image:linear-gradient(to top,#000 78%,transparent)}
 nav.appnav button.on{color:#1d1a10!important}
 nav.appnav #navInk{border-radius:16px}
 main{margin-top:6px!important}
