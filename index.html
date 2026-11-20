@@ -527,6 +527,26 @@ header .brand .sw.g .nl.burn{animation-name:burnoutg!important}
   55%{color:#55482a;text-shadow:none}70%{color:#f1cd72;text-shadow:0 0 6px rgba(241,205,114,.6),0 0 20px rgba(217,178,90,.35)}100%{color:#f1cd72;text-shadow:0 0 6px rgba(241,205,114,.6),0 0 20px rgba(217,178,90,.35),0 2px 0 rgba(0,0,0,.35)}}
 .rchip{position:absolute;width:60px;height:60px;opacity:0;filter:drop-shadow(0 8px 12px rgba(0,0,0,.55));animation:rcfall var(--d) cubic-bezier(.25,.6,.35,1) var(--dl) forwards}
 @media (prefers-reduced-motion:reduce){.rchip{animation:none;opacity:var(--op)}}
+
+/* ===== aba Mãos (só administrador) ===== */
+.rng-pos{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 12px;padding-bottom:2px}
+.rng-pos button{flex:0 0 auto;border:1px solid rgba(217,178,90,.25);background:rgba(0,0,0,.2);color:#cfe0d6;border-radius:999px;padding:7px 12px;font:800 12px Inter;cursor:pointer}
+.rng-pos button.on{background:linear-gradient(180deg,#e9c46a,#c9a24a);color:#1d1a10;border-color:transparent}
+.rng-grid{display:grid;grid-template-columns:repeat(13,1fr);gap:2px;width:100%;max-width:520px;margin:0 auto}
+.rng-grid i{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:4px;font:700 clamp(8px,2.3vw,12px) Inter;font-style:normal;letter-spacing:-.3px;
+  background:rgba(255,255,255,.05);color:rgba(255,255,255,.28);transition:background .25s,color .25s}
+.rng-grid i.p{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.rng-grid i.in{background:linear-gradient(180deg,#3fae6a,#2a8a50);color:#fff}
+.rng-grid i.in.s{background:linear-gradient(180deg,#e0b955,#c9a24a);color:#1d1a10}
+.rng-grid i.in.p{background:linear-gradient(180deg,#e2584b,#b8382c);color:#fff}
+.rng-meta{display:flex;justify-content:space-between;align-items:baseline;margin:12px 2px 4px;gap:10px}
+.rng-meta b{font:900 22px Inter;color:#f1cd72;white-space:nowrap}.rng-meta span{font:600 12px Inter;color:#9fb8a8;text-align:right}
+.rng-leg{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font:600 12px Inter;color:#cfe0d6}.rng-leg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+.rng-seats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rng-seats span{font:700 12px Inter;padding:6px 9px;border-radius:10px;background:rgba(0,0,0,.25);color:#cfe0d6;border:1px solid rgba(255,255,255,.08)}
+.rng-seats span b{color:#f1cd72}
+.rng-n{display:flex;align-items:center;gap:8px;font:700 13px Inter;color:#cfe0d6}.rng-n select{background:rgba(0,0,0,.3);color:#f6efdc;border:1px solid rgba(217,178,90,.3);border-radius:10px;padding:6px 8px;font:700 13px Inter}
+nav.appnav button[data-tab="maos"]{display:none!important}nav.appnav.admin button[data-tab="maos"]{display:flex!important}
 /* ===== cara de app ===== */
 html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
 body{-webkit-tap-highlight-color:transparent;padding-bottom:calc(84px + env(safe-area-inset-bottom));padding-top:env(safe-area-inset-top)}
@@ -641,6 +661,7 @@ header .tag .tag-t{flex-basis:100%;text-align:center;margin-top:7px}
   <button data-tab="ranking" class="on"><svg viewBox="0 0 24 24"><path d="M7 21h10M12 17v4M6 4h12v4a6 6 0 0 1-12 0V4Z M6 6H3v1a4 4 0 0 0 4 4M18 6h3v1a4 4 0 0 1-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ranking</span></button>
   <button data-tab="tabela"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Estatísticas</span></button>
   <button data-tab="sessoes"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="11" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 6.5v0M15 7l4 1.2-3.2 11.6-6.3-1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 8.5c1 1.3 2.2 2 2.2 3.2a1.6 1.6 0 0 1-2.2 1.4 1.6 1.6 0 0 1-2.2-1.4c0-1.2 1.2-1.9 2.2-3.2Z" fill="currentColor"/></svg><span>Jogos</span></button>
+  <button data-tab="maos"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Mãos</span></button>
 </nav>
 <button id="fab" aria-label="Registrar novo jogo">+</button>
 <main>
@@ -681,6 +702,24 @@ header .tag .tag-t{flex-basis:100%;text-align:center;margin-top:7px}
 
 
 
+  <section id="tab-maos" class="hidden">
+    <div class="card"><h2>Entrada de mão por posição</h2>
+      <p class="muted" style="margin:0 0 10px">Mãos pra <b>abrir aumentando</b> quando ninguém entrou antes de você (sem limp). Fora da tabela: fold. Faixas padrão de cash com ~100 big blinds.</p>
+      <div class="rng-pos" id="rngPos"></div>
+      <div class="rng-grid" id="rngGrid"></div>
+      <div class="rng-meta"><b id="rngPct"></b><span id="rngDesc"></span></div>
+      <div class="rng-leg"><span><i style="background:#c8392d"></i>par</span><span><i style="background:#d4ad50"></i>suited (mesmo naipe)</span><span><i style="background:#2f9a5a"></i>offsuit</span></div>
+      <p class="muted" style="margin:10px 0 0;font-size:12px">Acima da diagonal: suited · abaixo: offsuit · diagonal: pares.</p>
+    </div>
+    <div class="card"><h2>Qual tabela usar</h2>
+      <div class="rng-n">Jogadores na mesa <select id="rngN"></select></div>
+      <div class="rng-seats" id="rngSeats"></div>
+      <p class="muted" style="margin:10px 0 0;font-size:12px">Ordem de quem fala primeiro antes do flop. Quanto mais perto do botão, mais mãos dá pra abrir. No BB você não abre: defende contra aumentos.</p>
+    </div>
+    <div class="card"><h2>Ajustes pra nossa mesa</h2>
+      <p class="muted" style="margin:0">Se alguém já <b>aumentou</b>, jogue bem mais fechado que a tabela (pares médios+, AQ+, AJs+, KQs). Se a mesa paga muito, aposte mais grande (3–4× o big blind) e diminua os blefes. Se todo mundo dá limp, aumente com a tabela da sua posição e um pouco mais forte.</p>
+    </div>
+  </section>
   <section id="tab-sessoes" class="hidden">
     <button class="btn gold novabtn" id="novaBtn">+ Registrar novo jogo</button>
   <div id="novaBox" class="hidden">
@@ -806,8 +845,9 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showTab(b.datas
 function showTab(t){
   const prev=(document.querySelector("nav button.on")||{}).dataset;const pt=prev&&prev.tab;
   document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===t));
-  ["ranking","tabela","sessoes"].forEach(x=>$("tab-"+x).classList.toggle("hidden",x!==t));
+  ["ranking","tabela","sessoes","maos"].forEach(x=>$("tab-"+x).classList.toggle("hidden",x!==t));
   if(t==="sessoes") render();
+  if(t==="maos") renderMaos();
   if(t==="tabela"){if(pt!==t&&!document.querySelector('[data-pane="graf"]').classList.contains("hidden"))S.drawChart=true;render()}
   if(pt!==t){animTab(t,pt);window.scrollTo(0,0)}else moveInk();fabSync();
 }
@@ -1206,7 +1246,7 @@ function startEdit(id){
   (s.entries||[]).forEach(e=>{const c=e.chips!=null?Number(e.chips):Math.round(resultOf(e)/sessVal(s)*sessChips(s)*100)/100;S.draft[e.playerId]={on:true,chips:String(c),buyins:buyinsOf(e,s),final:String(finalOf(e,s))}});
   renderEntries();showTabRaw("sessoes");openForm();
 }
-function showTabRaw(t){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===t));["ranking","tabela","sessoes"].forEach(x=>$("tab-"+x).classList.toggle("hidden",x!==t))}
+function showTabRaw(t){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===t));["ranking","tabela","sessoes","maos"].forEach(x=>$("tab-"+x).classList.toggle("hidden",x!==t))}
 $("cancelEdit").onclick=()=>{resetForm();closeForm()};
 $("novaBtn").onclick=()=>{if(!S.editing)resetForm();openForm()};
 $("closeForm").onclick=()=>{resetForm();closeForm()};
@@ -1405,7 +1445,7 @@ const SB_URL="https://rufvvoqlmonsrqioakeq.supabase.co";
 const SB_KEY="sb_publishable_A46vdBeJySYQvARZXaIZkA_WrIoHNNc";
 const sb=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false}});
 function getPin(){try{return localStorage.getItem("mesa_pin")||""}catch(e){return""}}
-function setPin(p){try{p?localStorage.setItem("mesa_pin",p):localStorage.removeItem("mesa_pin")}catch(e){}}
+function setPin(p){try{p?localStorage.setItem("mesa_pin",p):localStorage.removeItem("mesa_pin")}catch(e){}try{adminSync()}catch(e){}}
 function askPin(msg){return new Promise(res=>{
   const m=$("pinModal");m.classList.remove("hidden");$("pinMsg").textContent=msg||"Digite o código da mesa para registrar.";
   const inp=$("pinInput");inp.value="";setTimeout(()=>inp.focus(),50);
@@ -1420,7 +1460,7 @@ async function ensurePin(){
     const p=await askPin(msg);if(p===null)throw{code:"pin_cancel"};
     const {data,error}=await sb.rpc("check_pin",{p_pin:p});
     if(error)throw{code:"unavailable"};
-    if(data){setPin(p);return p}
+    if(data){setPin(p);adminSync();return p}
     msg="Código errado. Tente de novo.";
   }
   throw{code:"pin"};
@@ -1667,7 +1707,52 @@ function renderGame(){
 }
 
 /* ---------- animações ---------- */
-const TABS=["ranking","tabela","sessoes"];
+const TABS=["ranking","tabela","sessoes","maos"];
+
+/* ---------- aba Mãos (só administrador) ---------- */
+const RANGES={
+  "UTG":"77+,A9s+,A5s-A4s,KTs+,QTs+,JTs,T9s,AJo+,KQo",
+  "UTG+1":"66+,A8s+,A5s-A3s,KTs+,QTs+,JTs,T9s,98s,AJo+,KQo",
+  "UTG+2":"66+,A7s+,A5s-A2s,K9s+,QTs+,J9s+,T9s,98s,87s,ATo+,KJo+",
+  "MP":"55+,A2s+,K9s+,Q9s+,J9s+,T8s+,98s,87s,76s,ATo+,KJo+,QJo",
+  "HJ":"33+,A2s+,K8s+,Q9s+,J8s+,T8s+,97s+,87s,76s,65s,A9o+,KTo+,QTo+,JTo",
+  "CO":"22+,A2s+,K5s+,Q7s+,J7s+,T7s+,96s+,86s+,75s+,65s,54s,A7o+,A5o,K9o+,Q9o+,J9o+,T9o",
+  "BTN":"22+,A2s+,K2s+,Q3s+,J5s+,T6s+,95s+,85s+,74s+,64s+,53s+,43s,A2o+,K7o+,Q8o+,J8o+,T8o+,97o+,87o",
+  "SB":"22+,A2s+,K3s+,Q5s+,J6s+,T6s+,96s+,85s+,75s+,64s+,54s,A2o+,K8o+,Q9o+,J9o+,T9o"};
+const RDESC={"UTG":"primeiro a falar · o mais fechado","UTG+1":"segundo a falar","UTG+2":"terceiro a falar","MP":"meio da mesa","HJ":"duas antes do botão","CO":"uma antes do botão","BTN":"botão · fala por último depois do flop","SB":"small blind · só o BB depois de você"};
+const RK="AKQJT98765432";
+function parseRange(str){const set=new Set(),ri=c=>RK.indexOf(c);
+  const add=(a,b,t)=>set.add(t==="p"?a+a:a+b+t);
+  str.split(",").forEach(tok=>{tok=tok.trim();if(!tok)return;
+    const m=tok.match(/^([AKQJT2-9])([AKQJT2-9])([so]?)(\+?)(?:-([AKQJT2-9])([AKQJT2-9])[so]?)?$/);if(!m)return;
+    const [,a,b,t,plus,,lo]=m;
+    if(a===b){const s=ri(a);for(let i=plus?0:s;i<=s;i++)add(RK[i],RK[i],"p");return}
+    const ia=ri(a),ib=ri(b);
+    if(lo){const il=ri(lo);for(let j=ib;j<=il;j++)add(a,RK[j],t);return}
+    if(plus){for(let j=ia+1;j<=ib;j++)add(a,RK[j],t);return}
+    add(a,b,t)});
+  return set}
+const RSETS=Object.fromEntries(Object.entries(RANGES).map(([k,v])=>[k,parseRange(v)]));
+let rngPos="BTN";
+function renderMaos(){
+  $("rngPos").innerHTML=Object.keys(RANGES).map(p=>`<button data-rp="${p}" class="${p===rngPos?"on":""}">${p}</button>`).join("");
+  {const bar=$("rngPos"),on=bar.querySelector(".on");if(on)bar.scrollLeft=on.offsetLeft-bar.clientWidth/2+on.offsetWidth/2}
+  const set=RSETS[rngPos];let combos=0,h="";
+  for(let i=0;i<13;i++)for(let j=0;j<13;j++){let code,cls;
+    if(i===j){code=RK[i]+RK[i];cls="p"}else if(i<j){code=RK[i]+RK[j]+"s";cls="s"}else{code=RK[j]+RK[i]+"o";cls="o"}
+    const on=set.has(code);if(on)combos+=cls==="p"?6:cls==="s"?4:12;
+    h+=`<i class="${cls}${on?" in":""}">${i===j?RK[i]+RK[i]:i<j?RK[i]+RK[j]:RK[j]+RK[i]}</i>`}
+  $("rngGrid").innerHTML=h;
+  $("rngPct").textContent=(combos/1326*100).toFixed(1).replace(".",",")+"% das mãos";$("rngDesc").textContent=RDESC[rngPos];
+  const sel=$("rngN");if(!sel.options.length){sel.innerHTML=[3,4,5,6,7,8,9,10].map(n=>`<option ${n===8?"selected":""}>${n}</option>`).join("");sel.onchange=renderMaos}
+  const n=+sel.value,k=n-2,L=["UTG","UTG+1","UTG+2","MP","HJ","CO","BTN"];
+  const seats=k>7?[...Array(k-7).fill("UTG"),...L]:L.slice(-k);
+  $("rngSeats").innerHTML=seats.map((p,i)=>`<span>${i+1}º · <b>${p}</b></span>`).join("")+`<span><b>SB</b></span><span>BB · defende</span>`;
+}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-rp]");if(b){rngPos=b.dataset.rp;renderMaos()}});
+function adminSync(){const nav=document.querySelector("nav.appnav");if(!nav)return;const a=isAdmin();nav.classList.toggle("admin",a);
+  if(!a&&!$("tab-maos").classList.contains("hidden"))showTab("ranking");setTimeout(moveInk,30)}
+function isAdmin(){return !!getPin()}
 function animTab(t,prev){
   const sec=$("tab-"+t);if(!sec)return;
   const dir=prev&&TABS.indexOf(t)<TABS.indexOf(prev)?"r":"l";
@@ -1881,7 +1966,7 @@ $("profClose").onclick=closeProfile;
 $("savePix").onclick=async()=>{const m={};document.querySelectorAll("[data-pixk]").forEach(i=>{const v=i.value.trim();if(v)m[i.dataset.pixk]=v.slice(0,80)});
   $("pixMsg").textContent="Salvando…";try{await S.db.doc("config/pix").set(m);S.pix=m;$("pixMsg").textContent="Chaves salvas ✓"}catch(e){$("pixMsg").textContent=errMsg(e)}};
 $("bkExport").onclick=exportBackup;$("bkImport").onchange=e=>{if(e.target.files[0])importBackup(e.target.files[0]);e.target.value=""};
-setTimeout(()=>{moveInk();animTab("ranking")},60);$("profile").onclick=e=>{if(e.target.id==="profile"||e.target.classList.contains("sheet"))closeProfile()};
+setTimeout(()=>{adminSync();moveInk();animTab("ranking")},60);$("profile").onclick=e=>{if(e.target.id==="profile"||e.target.classList.contains("sheet"))closeProfile()};
 (async()=>{
   const timer=setTimeout(()=>banner("Carregando os dados… se demorar, a conexão pode estar instável."),10000);
   let db=null;try{db=makeDb()}catch(e){console.error(e)}
