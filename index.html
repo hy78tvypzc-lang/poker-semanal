@@ -528,13 +528,14 @@ header .brand .sw.g .nl.burn{animation-name:burnoutg!important}
 .rchip{position:absolute;width:60px;height:60px;opacity:0;filter:drop-shadow(0 8px 12px rgba(0,0,0,.55));animation:rcfall var(--d) cubic-bezier(.25,.6,.35,1) var(--dl) forwards}
 @media (prefers-reduced-motion:reduce){.rchip{animation:none;opacity:var(--op)}}
 
-/* ===== aba Mãos (só administrador) ===== */
+/* ===== aba Mãos ===== */
 .rng-pos{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 12px;padding-bottom:2px}
 .rng-pos button{flex:0 0 auto;border:1px solid rgba(217,178,90,.25);background:rgba(0,0,0,.2);color:#cfe0d6;border-radius:999px;padding:7px 12px;font:800 12px Inter;cursor:pointer}
 .rng-pos button.on{background:linear-gradient(180deg,#e9c46a,#c9a24a);color:#1d1a10;border-color:transparent}
 .rng-grid{display:grid;grid-template-columns:repeat(13,1fr);gap:2px;width:100%;max-width:520px;margin:0 auto}
-.rng-grid i{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:4px;font:700 clamp(8px,2.3vw,12px) Inter;font-style:normal;letter-spacing:-.3px;
+.rng-grid i{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:4px;font:700 clamp(7px,2.05vw,12px) Inter;font-style:normal;letter-spacing:-.4px;
   background:rgba(255,255,255,.05);color:rgba(255,255,255,.28);transition:background .25s,color .25s}
+.rng-grid i u{text-decoration:none;font-size:.78em;opacity:.8;margin-left:.5px}
 .rng-grid i.p{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .rng-grid i.in{background:linear-gradient(180deg,#3fae6a,#2a8a50);color:#fff}
 .rng-grid i.in.s{background:linear-gradient(180deg,#e0b955,#c9a24a);color:#1d1a10}
@@ -546,7 +547,6 @@ header .brand .sw.g .nl.burn{animation-name:burnoutg!important}
 .rng-seats span{font:700 12px Inter;padding:6px 9px;border-radius:10px;background:rgba(0,0,0,.25);color:#cfe0d6;border:1px solid rgba(255,255,255,.08)}
 .rng-seats span b{color:#f1cd72}
 .rng-n{display:flex;align-items:center;gap:8px;font:700 13px Inter;color:#cfe0d6}.rng-n select{background:rgba(0,0,0,.3);color:#f6efdc;border:1px solid rgba(217,178,90,.3);border-radius:10px;padding:6px 8px;font:700 13px Inter}
-nav.appnav button[data-tab="maos"]{display:none!important}nav.appnav.admin button[data-tab="maos"]{display:flex!important}
 /* ===== cara de app ===== */
 html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
 body{-webkit-tap-highlight-color:transparent;padding-bottom:calc(84px + env(safe-area-inset-bottom));padding-top:env(safe-area-inset-top)}
@@ -1709,7 +1709,7 @@ function renderGame(){
 /* ---------- animações ---------- */
 const TABS=["ranking","tabela","sessoes","maos"];
 
-/* ---------- aba Mãos (só administrador) ---------- */
+/* ---------- aba Mãos ---------- */
 const RANGES={
   "UTG":"77+,A9s+,A5s-A4s,KTs+,QTs+,JTs,T9s,AJo+,KQo",
   "UTG+1":"66+,A8s+,A5s-A3s,KTs+,QTs+,JTs,T9s,98s,AJo+,KQo",
@@ -1741,7 +1741,7 @@ function renderMaos(){
   for(let i=0;i<13;i++)for(let j=0;j<13;j++){let code,cls;
     if(i===j){code=RK[i]+RK[i];cls="p"}else if(i<j){code=RK[i]+RK[j]+"s";cls="s"}else{code=RK[j]+RK[i]+"o";cls="o"}
     const on=set.has(code);if(on)combos+=cls==="p"?6:cls==="s"?4:12;
-    h+=`<i class="${cls}${on?" in":""}">${i===j?RK[i]+RK[i]:i<j?RK[i]+RK[j]:RK[j]+RK[i]}</i>`}
+    h+=`<i class="${cls}${on?" in":""}">${i===j?RK[i]+RK[i]:i<j?RK[i]+RK[j]+"<u>s</u>":RK[j]+RK[i]+"<u>o</u>"}</i>`}
   $("rngGrid").innerHTML=h;
   $("rngPct").textContent=(combos/1326*100).toFixed(1).replace(".",",")+"% das mãos";$("rngDesc").textContent=RDESC[rngPos];
   const sel=$("rngN");if(!sel.options.length){sel.innerHTML=[3,4,5,6,7,8,9,10].map(n=>`<option ${n===8?"selected":""}>${n}</option>`).join("");sel.onchange=renderMaos}
@@ -1752,7 +1752,7 @@ function renderMaos(){
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-rp]");if(b){rngPos=b.dataset.rp;renderMaos()}});
 function adminSync(){const nav=document.querySelector("nav.appnav");if(!nav)return;const a=isAdmin();nav.classList.toggle("admin",a);
   if(!a&&!$("tab-maos").classList.contains("hidden"))showTab("ranking");setTimeout(moveInk,30)}
-function isAdmin(){return !!getPin()}
+function isAdmin(){return true;return !!getPin()}
 function animTab(t,prev){
   const sec=$("tab-"+t);if(!sec)return;
   const dir=prev&&TABS.indexOf(t)<TABS.indexOf(prev)?"r":"l";
